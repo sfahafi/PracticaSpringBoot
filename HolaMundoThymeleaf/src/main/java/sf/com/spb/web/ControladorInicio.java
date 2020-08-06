@@ -40,14 +40,14 @@ public class ControladorInicio {
         return "redirect:/";
     }
     
-    @GetMapping("/editar/{idPersona}")
+    @GetMapping("/editar/{id}")
     public String editar(Persona persona, Model model){
         persona = personaService.encontarPersona(persona);
         model.addAttribute("persona", persona);
         return "modificar";
     }
     
-    @GetMapping("/eliminar")
+    @GetMapping("/eliminar/{id}")
     public String eliminar(Persona persona){
         personaService.eliminar(persona);
         return "redirect:/";

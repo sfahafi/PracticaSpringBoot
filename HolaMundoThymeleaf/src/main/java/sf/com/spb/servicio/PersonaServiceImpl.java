@@ -33,7 +33,7 @@ public class PersonaServiceImpl implements PersonaService{
     @Override
     @Transactional(readOnly = true)
     public Persona encontarPersona(Persona persona) {
-        return personaDao.findById(persona.getIdPersona()).orElse(null);
+        return personaDao.findById(persona.getId()).orElse(null);
     }
     
 }

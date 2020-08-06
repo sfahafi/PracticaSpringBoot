@@ -15,7 +15,7 @@ public class Persona implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPersona;
+    private Long id;
     
     @NotEmpty
     private String nombre;
