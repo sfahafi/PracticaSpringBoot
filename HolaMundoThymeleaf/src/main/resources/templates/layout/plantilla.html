@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://wwwthymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://wwwthymeleaf.org"
+      xmlns:sec="http://wwwthymeleaf.org/extras/spring-security">
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8"/>
@@ -13,12 +14,15 @@
         <footer th:fragment="footer">
             <div>
                 <br/>
-                <a th:href="@{/(lang=es)}">ES</a> 
+                <a th:href="@{/(lang=es)}">ES</a> |
                 <a th:href="@{/(lang=en)}">EN</a>
             </div>
             <span>[[#{plantilla.pie-pagina}]] <a href="http://www.sfahafi.com" target="_blank">sfahafi.com</a></span>
             <form method="POST" th:action="@{/logout}">
-                <a href="#" onclick="this.parentNode.submit();">Logout</a>
+                <b>User:</b> <span sec:authentication="name">Usuario que inicio sesion</span> |
+                <b>Roles:</b> <span sec:authentication="principal.authorities">Roles</span> |
+                <br/>
+                <a href="#" onclick="this.parentNode.submit();">[[#{accion.salir}]]</a>
             </form>
         </footer>
         
