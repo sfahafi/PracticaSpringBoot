@@ -21,6 +21,8 @@
                                         <tr>
                                             <th>#</th>
                                             <th th:text="#{persona.nombre}">Nombre</th>
+                                            <th th:text="#{persona.email}">Email</th>
+                                            <th th:text="#{persona.telefono}">Telefono</th>
                                             <th th:text="#{persona.saldo}">Saldo</th>
                                             <th></th>
                                             <th></th>
@@ -30,7 +32,9 @@
                                         <tr th:each="persona, contador : ${personas}">
                                             <td>[[${contador.count}]]</td>
                                             <td>[[${persona.nombre}]] [[${persona.apellido}]]</td>
-                                            <td>[[${new java.text.DecimalFormat('$#,##0,00').format(persona.saldo)}]]</td>
+                                            <td>[[${persona.email}]]</td>
+                                            <td>[[${persona.telefono}]]</td>
+                                            <td>[[${new java.text.DecimalFormat('$#,##0.00').format(persona.saldo)}]]</td>
                                             <td>
                                                 <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editar/} + ${persona.id}"
                                                    class="btn btn-secondary">
@@ -38,7 +42,7 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminar/(id=${persona.id})}"
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminar/} + ${persona.id}"
                                                    class="btn btn-dark">
                                                     <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
                                                 </a>
@@ -58,7 +62,7 @@
                             <div class="card-body">
                                 <h3 th:text="#{persona.saldoTotal}">Saldo total</h3>
                                 <h4 class="display-4">
-                                    [[${new java.text.DecimalFormat('$#,##0,00').format(saldoTotal)}]]
+                                    [[${new java.text.DecimalFormat('$#,##0.00').format(saldoTotal)}]]
                                 </h4>
                             </div>
                         </div>
